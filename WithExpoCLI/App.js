@@ -1,10 +1,12 @@
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View } from "react-native";
+import Game from "./src/components/Game";
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <StatusBar style="auto" />
+      <Game />
+      <StatusBar style="auto" hidden />
     </View>
   );
 }
