@@ -3,6 +3,8 @@ import Birds from "../src/components/Birds";
 import Floor from "../src/components/Floor";
 
 import { Dimensions } from "react-native";
+import Obstacle from "../src/components/Obstacle";
+import { getPipeSizePosPair } from "../src/utils/random";
 
 const { height, width } = Dimensions.get("window");
 
@@ -13,9 +15,25 @@ export default (restart) => {
 
   world.gravity.y = 0.4;
 
+  const pipeSizePosA = getPipeSizePosPair(-250);
+
   return {
     physics: { engine, world },
     Bird: Birds(world, "green", { x: 50, y: 300 }, { height: 40, width: 40 }),
+    ObstacleTop1: Obstacle(
+      world,
+      "ObstacleTop1",
+      "red",
+      pipeSizePosA.pipeTop.pos,
+      pipeSizePosA.pipeTop.size
+    ),
+    ObstacleBottom1: Obstacle(
+      world,
+      "ObstacleBottom1",
+      "blue",
+      pipeSizePosA.pipeBottom.pos,
+      pipeSizePosA.pipeBottom.size
+    ),
     Floor: Floor(
       world,
       "green",
