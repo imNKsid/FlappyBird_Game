@@ -10,6 +10,7 @@ const Floor = (props) => {
   const yBody = props.body.position.y - heightBody / 2;
 
   const color = props.color;
+  //   console.log("Floor =>", xBody, yBody, widthBody, heightBody);
 
   return (
     <View

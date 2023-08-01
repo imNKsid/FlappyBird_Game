@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Image, View } from "react-native";
 import React from "react";
 import Matter from "matter-js";
 
@@ -12,18 +12,34 @@ const Obstacle = (props) => {
   const color = props.color;
 
   return (
-    <View
-      style={[
-        styles.abc,
-        {
-          left: xBody,
-          top: yBody,
-          width: widthBody,
-          height: heightBody,
-          borderColor: color,
-        },
-      ]}
-    />
+    <>
+      <View
+        style={[
+          styles.abc,
+          {
+            left: xBody,
+            top: yBody,
+            width: widthBody,
+            height: heightBody,
+            borderColor: "green",
+            backgroundColor: "green",
+          },
+        ]}
+      />
+      {/* <Image
+        source={require("../../assets/images/pipe.png")}
+        style={[
+          //   styles.abc,
+          {
+            left: xBody,
+            top: yBody,
+            width: widthBody,
+            height: heightBody,
+            // borderColor: color,
+          },
+        ]}
+      /> */}
+    </>
   );
 };
 

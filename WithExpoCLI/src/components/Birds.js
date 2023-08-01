@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View } from "react-native";
+import { Image, StyleSheet, Text, View } from "react-native";
 import React from "react";
 import Matter from "matter-js";
 
@@ -10,9 +10,10 @@ const Birds = (props) => {
   const yBody = props.body.position.y - heightBody / 2;
 
   const color = props.color;
-
+  //   console.log("xBody =>", xBody, yBody, widthBody, heightBody);
   return (
-    <View
+    <>
+      {/* <View
       style={[
         styles.abc,
         {
@@ -23,7 +24,21 @@ const Birds = (props) => {
           borderColor: color,
         },
       ]}
-    />
+    /> */}
+      <Image
+        source={require("../../assets/images/bird.png")}
+        style={[
+          styles.abc,
+          {
+            left: xBody,
+            top: yBody,
+            width: 38,
+            height: 27,
+            // borderColor: color,
+          },
+        ]}
+      />
+    </>
   );
 };
 
@@ -47,7 +62,7 @@ export default (world, color, pos, size) => {
 const styles = StyleSheet.create({
   abc: {
     borderWidth: 1,
-    borderStyle: "solid",
+    // borderStyle: "solid",
     position: "absolute",
   },
 });
