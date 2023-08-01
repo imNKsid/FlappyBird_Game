@@ -18,8 +18,17 @@ export const Physics = (entities, { touches, time, dispatch }) => {
   Matter.Engine.update(engine, time.delta);
 
   for (let index = 1; index <= 2; index++) {
+    if (
+      entities[`ObstacleTop${index}`].body.bounds.max.x <= 50 &&
+      !entities[`ObstacleTop${index}`].point
+    ) {
+      entities[`ObstacleTop${index}`].point = true;
+      dispatch({ type: "new_point" });
+    }
+
     if (entities[`ObstacleTop${index}`].body.bounds.max.x <= 0) {
       const pipeSizePos = getPipeSizePosPair(width * 0.9);
+
       Matter.Body.setPosition(
         entities[`ObstacleTop${index}`].body,
         pipeSizePos.pipeTop.pos
@@ -28,7 +37,10 @@ export const Physics = (entities, { touches, time, dispatch }) => {
         entities[`ObstacleBottom${index}`].body,
         pipeSizePos.pipeBottom.pos
       );
+
+      entities[`ObstacleTop${index}`].point = false;
     }
+
     Matter.Body.translate(entities[`ObstacleTop${index}`].body, {
       x: -3,
       y: 0,
@@ -39,5 +51,8 @@ export const Physics = (entities, { touches, time, dispatch }) => {
     });
   }
 
+  Matter.Events.on(engine, "collisionStart", (event) => {
+    dispatch({ type: "game_over" });
+  });
   return entities;
 };
