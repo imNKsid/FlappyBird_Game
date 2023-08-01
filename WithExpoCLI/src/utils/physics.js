@@ -1,4 +1,8 @@
 import Matter from "matter-js";
+import { getPipeSizePosPair } from "./random";
+import { Dimensions } from "react-native";
+
+const { width } = Dimensions.get("window");
 
 export const Physics = (entities, { touches, time, dispatch }) => {
   let engine = entities.physics.engine;
@@ -12,6 +16,28 @@ export const Physics = (entities, { touches, time, dispatch }) => {
       });
     });
   Matter.Engine.update(engine, time.delta);
+
+  for (let index = 1; index <= 2; index++) {
+    if (entities[`ObstacleTop${index}`].body.bounds.max.x <= 0) {
+      const pipeSizePos = getPipeSizePosPair(width * 0.9);
+      Matter.Body.setPosition(
+        entities[`ObstacleTop${index}`].body,
+        pipeSizePos.pipeTop.pos
+      );
+      Matter.Body.setPosition(
+        entities[`ObstacleBottom${index}`].body,
+        pipeSizePos.pipeBottom.pos
+      );
+    }
+    Matter.Body.translate(entities[`ObstacleTop${index}`].body, {
+      x: -3,
+      y: 0,
+    });
+    Matter.Body.translate(entities[`ObstacleBottom${index}`].body, {
+      x: -3,
+      y: 0,
+    });
+  }
 
   return entities;
 };
