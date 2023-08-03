@@ -9,7 +9,7 @@ const Birds = (props) => {
   const xBody = props.body.position.x - widthBody / 2;
   const yBody = props.body.position.y - heightBody / 2;
 
-  const color = props.color;
+  //   const color = props.color;
   //   console.log("xBody =>", xBody, yBody, widthBody, heightBody);
   return (
     <>

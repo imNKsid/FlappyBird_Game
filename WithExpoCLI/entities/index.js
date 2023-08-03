@@ -64,12 +64,21 @@ export default (restart) => {
       pipeSizePosB.pipeBottom.size
     ),
 
-    //Returning "Floor" component, and passing the physics world, the color "green",
-    //positioning at the bottom of the screen (vertically), and the size { height: 40, width: width } as props.
+    //Returning "Floor" component, and passing the physics world, the color "green", positioning
+    //at the bottom of the screen (vertically), and the size { height: 40, width: width } as props.
     Floor: Floor(
       world,
       "green",
       { x: width / 2, y: height },
+      { height: 40, width: width }
+    ),
+
+    //Returning "Floor" component, and passing the physics world, the color "green", positioning
+    //at the top of the screen (vertically), and the size { height: 40, width: width } as props.
+    FloorTop: Floor(
+      world,
+      "green",
+      { x: width / 2, y: -60 },
       { height: 40, width: width }
     ),
   };
