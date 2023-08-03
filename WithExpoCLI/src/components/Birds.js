@@ -14,17 +14,20 @@ const Birds = (props) => {
   return (
     <>
       {/* <View
-      style={[
-        styles.abc,
-        {
-          left: xBody,
-          top: yBody,
-          width: widthBody,
-          height: heightBody,
-          borderColor: color,
-        },
-      ]}
-    /> */}
+        style={[
+          styles.abc,
+          {
+            left: xBody,
+            top: yBody,
+            width: widthBody,
+            height: heightBody,
+            borderColor: color,
+            borderRadius: widthBody / 2,
+            borderWidth: 1,
+            borderStyle: "solid",
+          },
+        ]}
+      /> */}
       <Image
         source={require("../../assets/images/bird.png")}
         style={[
@@ -32,9 +35,8 @@ const Birds = (props) => {
           {
             left: xBody,
             top: yBody,
-            width: 38,
-            height: 27,
-            // borderColor: color,
+            width: widthBody,
+            height: heightBody,
           },
         ]}
       />
@@ -61,8 +63,6 @@ export default (world, color, pos, size) => {
 
 const styles = StyleSheet.create({
   abc: {
-    borderWidth: 1,
-    // borderStyle: "solid",
     position: "absolute",
   },
 });

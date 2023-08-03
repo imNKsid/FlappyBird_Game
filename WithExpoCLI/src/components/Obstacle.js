@@ -21,8 +21,8 @@ const Obstacle = (props) => {
             top: yBody,
             width: widthBody,
             height: heightBody,
-            borderColor: "green",
-            backgroundColor: "green",
+            borderColor: color,
+            backgroundColor: color,
           },
         ]}
       />
