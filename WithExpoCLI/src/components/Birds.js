@@ -45,6 +45,9 @@ const Birds = (props) => {
 };
 
 export default (world, color, pos, size) => {
+  //Exporting a factory function, with 4 arguments, that creates the bird's physics body using Matter.js.
+
+  //Creating a rectangular object "initialBird".
   const initialBird = Matter.Bodies.rectangle(
     pos.x,
     pos.y,
@@ -52,13 +55,15 @@ export default (world, color, pos, size) => {
     size.height,
     { label: "Bird" }
   );
-  Matter.World.add(world, initialBird);
+  Matter.World.add(world, initialBird); //Adding the initialBird to the Game's physics world.
   return {
     body: initialBird,
     color,
     pos,
     renderer: <Birds />,
   };
+  //Finally, returning an object containing the bird's body (body), its color (color),
+  //its position (pos), and a reference to the Birds component.
 };
 
 const styles = StyleSheet.create({

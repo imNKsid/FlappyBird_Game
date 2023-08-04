@@ -44,12 +44,15 @@ const Obstacle = (props) => {
 };
 
 export default (world, label, color, pos, size) => {
+  //Exporting a factory function, with 5 arguments, that creates the obstacle's physics body using Matter.js.
+
+  //Creating a rectangular object "initialObstacle".
   const initialObstacle = Matter.Bodies.rectangle(
     pos.x,
     pos.y,
     size.width,
     size.height,
-    { label: label, isStatic: true }
+    { label: label, isStatic: true } //Here, label is the name of the Obstacle (either top or bottom).
   );
   Matter.World.add(world, initialObstacle);
   return {
@@ -58,6 +61,8 @@ export default (world, label, color, pos, size) => {
     pos,
     renderer: <Obstacle />,
   };
+  //Finally, returning an object containing the Obstacle's body (body), its color (color),
+  //its position (pos), and a reference to the Obstacle component.
 };
 
 const styles = StyleSheet.create({
