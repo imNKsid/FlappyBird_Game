@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Image, View } from "react-native";
 import React from "react";
 import Matter from "matter-js";
 
@@ -12,28 +12,47 @@ const Obstacle = (props) => {
   const color = props.color;
 
   return (
-    <View
-      style={[
-        styles.abc,
-        {
-          left: xBody,
-          top: yBody,
-          width: widthBody,
-          height: heightBody,
-          borderColor: color,
-        },
-      ]}
-    />
+    <>
+      <View
+        style={[
+          styles.abc,
+          {
+            left: xBody,
+            top: yBody,
+            width: widthBody,
+            height: heightBody,
+            borderColor: color,
+            backgroundColor: color,
+          },
+        ]}
+      />
+      {/* <Image
+        source={require("../../assets/images/pipe.png")}
+        style={[
+          //   styles.abc,
+          {
+            left: xBody,
+            top: yBody,
+            width: widthBody,
+            height: heightBody,
+            // borderColor: color,
+          },
+        ]}
+      /> */}
+    </>
   );
 };
 
 export default (world, label, color, pos, size) => {
+  //Exporting a factory function, with 5 arguments, that creates the obstacle's physics body using Matter.js.
+
+  //Creating a rectangular object "initialObstacle".
   const initialObstacle = Matter.Bodies.rectangle(
     pos.x,
     pos.y,
     size.width,
     size.height,
-    { label: label, isStatic: true }
+    { label: label, isStatic: true } //Here, label is the name of the Obstacle (either top or bottom).
   );
   Matter.World.add(world, initialObstacle);
   return {
@@ -42,6 +61,8 @@ export default (world, label, color, pos, size) => {
     pos,
     renderer: <Obstacle />,
   };
+  //Finally, returning an object containing the Obstacle's body (body), its color (color),
+  //its position (pos), and a reference to the Obstacle component.
 };
 
 const styles = StyleSheet.create({
